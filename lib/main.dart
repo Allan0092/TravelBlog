@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travelblog/screens/Post/edit_post_screen.dart';
+import 'package:travelblog/screens/Post/my_post_screen.dart';
 import 'package:travelblog/screens/dashboard/dashboard.dart';
 import 'package:travelblog/viewmodels/post_viewmodel.dart';
 import 'firebase_options.dart';
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
               "/register": (BuildContext context) => RegisterScreen(),
               "/forget-password": (BuildContext context) => ForgetPasswordScreen(),
               "/dashboard": (BuildContext context) => DashboardScreen(),
+              "/my-posts": (BuildContext context) => MyPostScreen(),
+              "/edit-post": (BuildContext context) => EditPostScreen(),
 
             },
           );

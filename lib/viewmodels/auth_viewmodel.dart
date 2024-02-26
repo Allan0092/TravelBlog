@@ -90,51 +90,53 @@ class AuthViewModel with ChangeNotifier {
 
 
 
-  List<PostModel>? _myProduct;
-  List<PostModel>? get myProduct => _myProduct;
+  List<PostModel>? _myPost;
+  List<PostModel>? get myPost => _myPost;
 
   Future<void> getMyPosts() async {
     try {
       var productResponse =
           await PostRepository().getMyPosts(loggedInUser!.userId!);
-      _myProduct = [];
+      _myPost = [];
       for (var element in productResponse) {
-        _myProduct!.add(element.data());
+        _myPost!.add(element.data());
       }
       notifyListeners();
     } catch (e) {
       print(e);
-      _myProduct = null;
+      _myPost = null;
       notifyListeners();
     }
   }
 
-  Future<void> addMyProduct(PostModel product) async {
+  Future<void> addMyPost(PostModel post) async {
     try {
-      await PostRepository().addPosts(post: product);
+      await PostRepository().addPosts(post: post);
 
       await getMyPosts();
       notifyListeners();
     } catch (e) {}
   }
 
-  Future<void> editMyProduct(PostModel post, String productId) async {
+  Future<void> editMyPost(PostModel post, String postId) async {
     try {
       await PostRepository()
-          .editPost(post: post, postId: productId);
-      await getMyPosts();
-      notifyListeners();
-    } catch (e) {}
-  }
-
-  Future<void> deleteMyProduct(String productId) async {
-    try {
-      await PostRepository().removePost(productId, loggedInUser!.userId!);
+          .editPost(post: post, postId: postId);
       await getMyPosts();
       notifyListeners();
     } catch (e) {
-      print(e);
-      _myProduct = null;
+      print(e.toString());
+    }
+  }
+
+  Future<void> deleteMyPost(String postId) async {
+    try {
+      await PostRepository().removePost(postId, loggedInUser!.userId!);
+      await getMyPosts();
+      notifyListeners();
+    } catch (e) {
+      print(e.toString());
+      _myPost = null;
       notifyListeners();
     }
   }

@@ -29,10 +29,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         postName: _postNameController.text,
         userId: _authViewModel.loggedInUser!.userId,
       );
-      await _authViewModel.addMyProduct(data);
+      await _authViewModel.addMyPost(data);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Success")));
       Navigator.of(context).pop();
-      Navigator.of(context).pushNamed("dashboard");
+      Navigator.of(context).pushNamed("/dashboard");
     }catch(e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error")));
     }

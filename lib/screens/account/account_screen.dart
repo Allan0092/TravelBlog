@@ -66,7 +66,7 @@ class _AccountScreenState extends State<AccountScreen> {
               title: "My Posts",
               subtitle: "Look at my posts",
               onTap: (){
-                Navigator.of(context).pushNamed("/my-products");
+                Navigator.of(context).pushNamed("/my-posts");
               }
           ),
           makeSettings(
