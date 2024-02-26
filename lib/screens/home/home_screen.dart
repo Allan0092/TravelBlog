@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen>{
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
       _postViewModel = Provider.of<PostViewModel>(context, listen: false);
-      refresh;
+      refresh();
     });
     super.initState();
   }
@@ -60,22 +60,11 @@ class _HomeScreenState extends State<HomeScreen>{
                         height: 20,
                       ),
                       WelcomeText(authVM),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [...postVM.posts.map((e) => PostCard(e))],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
+
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
-                          "Products"
+                          "Blog Posts"
                         ),
                       ),
                       Container(
@@ -168,6 +157,7 @@ class _HomeScreenState extends State<HomeScreen>{
       },
       child: Container(
         width: 250,
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Card(
           elevation: 5,
           child: Stack(
@@ -199,13 +189,13 @@ class _HomeScreenState extends State<HomeScreen>{
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          postModel.productName.toString(),
+                          postModel.postName.toString(),
                           style: TextStyle(fontSize: 20),
                           textAlign: TextAlign.center,
                           maxLines: 2,
                         ),
                         Text(
-                          postModel.productDescription.toString(),
+                          postModel.postDescription.toString(),
                           style: TextStyle(fontSize: 15, color: Colors.green),
                           textAlign: TextAlign.left,
                           maxLines: 2,

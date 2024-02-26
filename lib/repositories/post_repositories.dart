@@ -82,7 +82,7 @@ class PostRepository {
     try {
       final response = await postRef.doc(id).get();
       if (!response.exists) {
-        throw Exception("Product doesnot exists");
+        throw Exception("Post doesnot exists");
       }
       return response;
     } catch (err) {

@@ -14,24 +14,24 @@ class PostModel {
   PostModel({
     this.id,
     this.userId,
-    this.productName,
-    this.productDescription,
+    this.postName,
+    this.postDescription,
     this.imageUrl,
     this.imagePath,
   });
 
   String? id;
   String? userId;
-  String? productName;
-  String? productDescription;
+  String? postName;
+  String? postDescription;
   String? imageUrl;
   String? imagePath;
 
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
     id: json["id"],
     userId: json["user_id"],
-    productName: json["productName"],
-    productDescription: json["productDescription"],
+    postName: json["postName"],
+    postDescription: json["postDescription"],
     imageUrl: json["imageUrl"],
     imagePath: json["imagePath"],
   );
@@ -41,8 +41,8 @@ class PostModel {
   factory PostModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => PostModel(
     id: json.id,
     userId: json["user_id"],
-    productName: json["productName"],
-    productDescription: json["productDescription"],
+    postName: json["postName"],
+    postDescription: json["postDescription"],
     imageUrl: json["imageUrl"],
     imagePath: json["imagePath"],
   );
@@ -51,8 +51,8 @@ class PostModel {
   Map<String, dynamic> toJson() => {
     "id": id,
     "user_id": userId,
-    "productName": productName,
-    "productDescription": productDescription,
+    "postName": postName,
+    "postDescription": postDescription,
     "imageUrl": imageUrl,
     "imagePath": imagePath,
   };

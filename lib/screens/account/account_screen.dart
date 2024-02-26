@@ -63,8 +63,8 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
           makeSettings(
               icon: Icon(Icons.sell),
-              title: "My Products",
-              subtitle: "Get listing of my products",
+              title: "My Posts",
+              subtitle: "Look at my posts",
               onTap: (){
                 Navigator.of(context).pushNamed("/my-products");
               }
