@@ -1,3 +1,4 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_kit/overlay_kit.dart';
@@ -24,11 +25,12 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   NotificationService.initialize();
-  runApp(const MyApp());
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
       ChangeNotifierProvider(create: (_) => AuthViewModel()),
-      ChangeNotifierProvider(create: (_) => PostViewModel())
+      ChangeNotifierProvider(create: (_) => PostViewModel()),
     ],
       child: OverlayKit(
         child: Consumer<GlobalUIViewModel>(builder: (context, loader, child){

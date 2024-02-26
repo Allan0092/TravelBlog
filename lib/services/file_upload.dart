@@ -12,13 +12,14 @@ class FileUpload{
       if(deletePath !=null){
         storage.child(deletePath).delete();
       }
-      var photo = await storage.child("products").child("$dt.jpg").putFile(File(selectedPath));
+      var photo = await storage.child("posts").child("$dt.jpg").putFile(File(selectedPath));
       String photoUrl = await photo.ref.getDownloadURL();
       return ImagePath(
         imageUrl: photoUrl,
         imagePath: photo.ref.fullPath
       );
     }catch(e){
+      print(e.toString());
       return null;
     }
   }
@@ -31,6 +32,7 @@ class FileUpload{
       }
       return true;
     }catch(e){
+      print(e.toString());
       return false;
     }
   }

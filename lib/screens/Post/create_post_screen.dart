@@ -78,7 +78,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             imagePath = image.imagePath;
           });
         }
-      }catch(e){}
+      }catch(e){
+        print(e.toString());
+      }
 
       _ui.loadState(false);
     }
@@ -95,7 +97,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           imageUrl=null;
         });
       });
-    }catch(e){}
+    }catch(e){
+      print(e.toString());
+    }
 
     _ui.loadState(false);
   }
