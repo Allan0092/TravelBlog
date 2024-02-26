@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelblog/screens/account/account_screen.dart';
+import 'package:travelblog/screens/home/home_screen.dart';
 import 'package:travelblog/viewmodels/auth_viewmodel.dart';
 import 'package:travelblog/viewmodels/global_ui_viewmodel.dart';
 import 'package:travelblog/viewmodels/post_viewmodel.dart';
@@ -58,7 +59,7 @@ class _DashboardScreenState extends State<DashboardScreen>{
       body: SafeArea(
         child: PageView(
           controller: pageController,
-          children: <Widget>[AccountScreen()],
+          children: <Widget>[HomeScreen(), AccountScreen()],
           onPageChanged: _onPageChanged,
           physics: const NeverScrollableScrollPhysics(),
         ),

@@ -93,7 +93,7 @@ class AuthViewModel with ChangeNotifier {
   List<PostModel>? _myProduct;
   List<PostModel>? get myProduct => _myProduct;
 
-  Future<void> getMyProducts() async {
+  Future<void> getMyPosts() async {
     try {
       var productResponse =
           await PostRepository().getMyPosts(loggedInUser!.userId!);
@@ -113,7 +113,7 @@ class AuthViewModel with ChangeNotifier {
     try {
       await PostRepository().addPosts(post: product);
 
-      await getMyProducts();
+      await getMyPosts();
       notifyListeners();
     } catch (e) {}
   }
@@ -122,7 +122,7 @@ class AuthViewModel with ChangeNotifier {
     try {
       await PostRepository()
           .editPost(post: post, postId: productId);
-      await getMyProducts();
+      await getMyPosts();
       notifyListeners();
     } catch (e) {}
   }
@@ -130,7 +130,7 @@ class AuthViewModel with ChangeNotifier {
   Future<void> deleteMyProduct(String productId) async {
     try {
       await PostRepository().removePost(productId, loggedInUser!.userId!);
-      await getMyProducts();
+      await getMyPosts();
       notifyListeners();
     } catch (e) {
       print(e);
