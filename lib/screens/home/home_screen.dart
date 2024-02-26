@@ -68,14 +68,14 @@ class _HomeScreenState extends State<HomeScreen>{
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        margin: EdgeInsets.symmetric(horizontal: 20),
                         child: GridView.count(
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 5,
+                          mainAxisSpacing: 30,
                           childAspectRatio: 0.7,
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          crossAxisCount: 2,
+                          crossAxisCount: 1,
                           children: [
                             ...postVM.posts.map((e) => PostCard(e))
                           ],
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen>{
       },
       child: Container(
         width: 250,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Card(
           elevation: 5,
           child: Stack(
@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen>{
               alignment: Alignment.bottomCenter,
                   child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.symmetric(vertical: 5),
+                    padding: EdgeInsets.symmetric(vertical: 100),
                     decoration: BoxDecoration(color: Colors.white),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -196,9 +196,9 @@ class _HomeScreenState extends State<HomeScreen>{
                         ),
                         Text(
                           postModel.postDescription.toString(),
-                          style: TextStyle(fontSize: 15, color: Colors.green),
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
                           textAlign: TextAlign.left,
-                          maxLines: 2,
+                          maxLines: 20,
                         )
                       ],
                     ),

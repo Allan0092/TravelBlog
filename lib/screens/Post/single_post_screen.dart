@@ -58,6 +58,12 @@ class _SinglePostBodyState extends State<SinglePostBody> {
     _ui.loadState(false);
   }
 
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
 
 
 }
