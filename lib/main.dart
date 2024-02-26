@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travelblog/screens/dashboard/dashboard.dart';
 import 'package:travelblog/viewmodels/product_viewmodel.dart';
 import 'firebase_options.dart';
 
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
               "/splash": (BuildContext context) => SplashScreen(),
               "/register": (BuildContext context) => RegisterScreen(),
               "/forget-password": (BuildContext context) => ForgetPasswordScreen(),
+              "/dashboard": (BuildContext context) => DashboardScreen(),
 
             },
           );

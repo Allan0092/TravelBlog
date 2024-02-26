@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }else{
         NotificationService.display(
           title: "Welcome back",
-          body: "Hello ${_authViewModel.loggedInUser?.name},\n We have been waiting for you.",
+          body: "Welcome back ${_authViewModel.loggedInUser?.name}",
         );
         Navigator.of(context).pushReplacementNamed("/dashboard");
       }
@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset("assets/images/splash.gif"),
+              Image.asset("assets/images/splash.jpg"),
               SizedBox(height: 100,),
               Text("Ecommerce", style: TextStyle(
                 fontSize: 22

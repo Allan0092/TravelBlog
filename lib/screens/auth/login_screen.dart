@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
           .login(_emailController.text, _passwordController.text)
           .then((value) {
         NotificationService.display(
-          title: "Welcome back",
+          title: "Welcome back!!",
           body:
-              "Hello ${_authViewModel.loggedInUser?.name},\n Hope you are having a wonderful day.",
+              "${_authViewModel.loggedInUser?.name},\n logged in successfully"
         );
         Navigator.of(context).pushReplacementNamed('/dashboard');
       }).catchError((e) {
@@ -140,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Align(
@@ -184,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Are you new? Create an account ",
+                        "Create an account",
                         style: TextStyle(color: Colors.grey.shade800),
                       ),
                       InkWell(
