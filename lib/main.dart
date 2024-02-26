@@ -4,7 +4,7 @@ import 'package:overlay_kit/overlay_kit.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travelblog/screens/dashboard/dashboard.dart';
-import 'package:travelblog/viewmodels/product_viewmodel.dart';
+import 'package:travelblog/viewmodels/post_viewmodel.dart';
 import 'firebase_options.dart';
 
 import 'package:travelblog/screens/auth/forget_password_screen.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
       ChangeNotifierProvider(create: (_) => AuthViewModel()),
-      ChangeNotifierProvider(create: (_) => ProductViewModel())
+      ChangeNotifierProvider(create: (_) => PostViewModel())
     ],
       child: OverlayKit(
         child: Consumer<GlobalUIViewModel>(builder: (context, loader, child){

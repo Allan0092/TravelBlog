@@ -6,12 +6,12 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-ProductModel? productModelFromJson(String str) => ProductModel.fromJson(json.decode(str));
+PostModel? postModelFromJson(String str) => PostModel.fromJson(json.decode(str));
 
-String productModelToJson(ProductModel? data) => json.encode(data!.toJson());
+String postModelToJson(PostModel? data) => json.encode(data!.toJson());
 
-class ProductModel {
-  ProductModel({
+class PostModel {
+  PostModel({
     this.id,
     this.userId,
     this.productName,
@@ -27,7 +27,7 @@ class ProductModel {
   String? imageUrl;
   String? imagePath;
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
+  factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
     id: json["id"],
     userId: json["user_id"],
     productName: json["productName"],
@@ -38,7 +38,7 @@ class ProductModel {
 
 
 
-  factory ProductModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => ProductModel(
+  factory PostModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => PostModel(
     id: json.id,
     userId: json["user_id"],
     productName: json["productName"],

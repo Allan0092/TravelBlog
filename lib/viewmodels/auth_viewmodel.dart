@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:travelblog/models/product_model.dart';
+import 'package:travelblog/models/post_model.dart';
 import 'package:travelblog/models/user_model.dart';
 import 'package:travelblog/repositories/auth_repositories.dart';
 import 'package:travelblog/services/firebase_service.dart';
 import 'package:travelblog/viewmodels/global_ui_viewmodel.dart';
 
 
-import '../repositories/product_repositories.dart';
+import '../repositories/post_repositories.dart';
 
 class AuthViewModel with ChangeNotifier {
   int _a = 1;
@@ -83,20 +83,20 @@ class AuthViewModel with ChangeNotifier {
   }
 
 
-  List<ProductModel>? _favoriteProduct;
-  List<ProductModel>? get favoriteProduct => _favoriteProduct;
+  List<PostModel>? _favoriteProduct;
+  List<PostModel>? get favoriteProduct => _favoriteProduct;
 
 
 
 
 
-  List<ProductModel>? _myProduct;
-  List<ProductModel>? get myProduct => _myProduct;
+  List<PostModel>? _myProduct;
+  List<PostModel>? get myProduct => _myProduct;
 
   Future<void> getMyProducts() async {
     try {
       var productResponse =
-          await ProductRepository().getMyProducts(loggedInUser!.userId!);
+          await PostRepository().getMyPosts(loggedInUser!.userId!);
       _myProduct = [];
       for (var element in productResponse) {
         _myProduct!.add(element.data());
@@ -109,19 +109,19 @@ class AuthViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> addMyProduct(ProductModel product) async {
+  Future<void> addMyProduct(PostModel product) async {
     try {
-      await ProductRepository().addProducts(product: product);
+      await PostRepository().addPosts(post: product);
 
       await getMyProducts();
       notifyListeners();
     } catch (e) {}
   }
 
-  Future<void> editMyProduct(ProductModel product, String productId) async {
+  Future<void> editMyProduct(PostModel post, String productId) async {
     try {
-      await ProductRepository()
-          .editProduct(product: product, productId: productId);
+      await PostRepository()
+          .editPost(post: post, postId: productId);
       await getMyProducts();
       notifyListeners();
     } catch (e) {}
@@ -129,7 +129,7 @@ class AuthViewModel with ChangeNotifier {
 
   Future<void> deleteMyProduct(String productId) async {
     try {
-      await ProductRepository().removeProduct(productId, loggedInUser!.userId!);
+      await PostRepository().removePost(productId, loggedInUser!.userId!);
       await getMyProducts();
       notifyListeners();
     } catch (e) {

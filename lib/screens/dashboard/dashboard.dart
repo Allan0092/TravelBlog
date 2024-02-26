@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:travelblog/screens/account/account_screen.dart';
 import 'package:travelblog/viewmodels/auth_viewmodel.dart';
 import 'package:travelblog/viewmodels/global_ui_viewmodel.dart';
-import 'package:travelblog/viewmodels/product_viewmodel.dart';
+import 'package:travelblog/viewmodels/post_viewmodel.dart';
 
 class DashboardScreen extends StatefulWidget{
   const DashboardScreen({Key? key}) : super(key: key);
@@ -30,21 +30,21 @@ class _DashboardScreenState extends State<DashboardScreen>{
   }
   late GlobalUIViewModel _ui;
   late AuthViewModel _authViewModel;
-  late ProductViewModel _productViewModel;
+  late PostViewModel _productViewModel;
 
   @override
   void initState(){
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
       _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
-      _productViewModel = Provider.of<ProductViewModel>(context, listen: false);
+      _productViewModel = Provider.of<PostViewModel>(context, listen: false);
       getInit();
     });
     super.initState();
   }
   void getInit(){
     try{
-      _productViewModel.getProducts();
+      _productViewModel.getPosts();
     }
     catch (e){
       print(e);

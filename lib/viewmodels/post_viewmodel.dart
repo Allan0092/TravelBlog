@@ -2,39 +2,39 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:travelblog/models/product_model.dart';
+import 'package:travelblog/models/post_model.dart';
 import 'package:travelblog/models/user_model.dart';
 import 'package:travelblog/repositories/auth_repositories.dart';
 import 'package:travelblog/services/firebase_service.dart';
 import 'package:travelblog/viewmodels/global_ui_viewmodel.dart';
-import '../repositories/product_repositories.dart';
+import '../repositories/post_repositories.dart';
 
-class ProductViewModel with ChangeNotifier {
-  ProductRepository _productRepository = ProductRepository();
-  List<ProductModel> _products = [];
-  List<ProductModel> get products => _products;
+class PostViewModel with ChangeNotifier {
+  PostRepository _postRepository = PostRepository();
+  List<PostModel> _posts = [];
+  List<PostModel> get posts => _posts;
 
-  Future<void> getProducts() async{
-    _products=[];
+  Future<void> getPosts() async{
+    _posts=[];
     notifyListeners();
     try{
-      var response = await _productRepository.getAllProducts();
+      var response = await _postRepository.getAllPosts();
       for (var element in response) {
         print(element.id);
-        _products.add(element.data());
+        _posts.add(element.data());
       }
       notifyListeners();
     }catch(e){
       print(e);
-      _products = [];
+      _posts = [];
       notifyListeners();
     }
   }
 
 
-  Future<void> addProduct(ProductModel product) async{
+  Future<void> addPost(PostModel post) async{
     try{
-      var response = await _productRepository.addProducts(product: product);
+      var response = await _postRepository.addPosts(post: post);
     }catch(e){
       notifyListeners();
     }
